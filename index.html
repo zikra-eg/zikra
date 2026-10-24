@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F5ECD7">
+<meta name="description" content="ذكرى — هدية مش زي أي هدية. موقع خاص بصوركم وأغانيكم ورسائلكم وأحلى ذكرياتكم.">
+<title>ذِكرى | خلي ذكرياتكم تعيش</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --brick:#C45A40;
+ --brick-dark:#a8442e;
+ --cream:#F5ECD7;
+ --paper:#fff9ed;
+ --ink:#3B2A24;
+ --muted:#806c60;
+ --line:#e5d5bd;
+ --shadow:0 16px 45px rgba(82,47,32,.10);
+ --radius:24px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Cairo",sans-serif;line-height:1.8;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+.section{padding:84px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--brick);font-size:.82rem;font-weight:800}
+.eyebrow:before{content:"";width:24px;height:2px;background:currentColor}
+.section-head{max-width:650px;margin-bottom:36px}
+.section-head h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.35;margin:10px 0 12px;letter-spacing:-1.2px}
+.section-head p{color:var(--muted);margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 24px;font-weight:800;transition:transform .25s,background .25s,box-shadow .25s;box-shadow:0 7px 18px rgba(196,90,64,.16)}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--brick);color:#fff9ed}
+.btn-primary:hover{background:var(--brick-dark)}
+.btn-light{background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn-small{padding:10px 17px;font-size:.9rem}
+
+header{position:sticky;top:0;z-index:50;background:rgba(245,236,215,.91);backdrop-filter:blur(16px);border-bottom:1px solid rgba(196,90,64,.12)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.3rem}
+.brand img{width:49px;height:49px;object-fit:contain;border-radius:13px}
+.brand small{display:block;font-size:.65rem;color:var(--muted);font-weight:500;line-height:1.3}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:.9rem;font-weight:700;color:#644a3e}
+.nav-links a:hover{color:var(--brick)}
+.menu-toggle{display:none;border:1px solid var(--line);background:var(--paper);border-radius:12px;width:44px;height:44px;color:var(--ink);font-size:1.3rem}
+
+.hero{position:relative;padding:60px 0 70px;overflow:hidden}
+.hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:#e8c6b3;opacity:.42;top:-210px;left:-150px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:52px;position:relative}
+.hero-copy h1{font-size:clamp(2.35rem,5vw,4.5rem);line-height:1.28;letter-spacing:-2px;margin:17px 0 20px}
+.hero-copy h1 span{color:var(--brick);white-space:nowrap}
+.hero-copy>p{font-size:1.08rem;color:var(--muted);max-width:530px;margin:0 0 26px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-note{display:flex;align-items:center;gap:10px;margin-top:25px;color:var(--muted);font-size:.85rem}
+.tiny-hearts{color:var(--brick);letter-spacing:3px}
+.hero-art{position:relative;min-height:460px;display:grid;place-items:center}
+.hero-halo{position:absolute;width:min(420px,90%);aspect-ratio:1;border-radius:50%;background:#ebd4bc}
+.hero-photo{position:relative;width:min(340px,80%);transform:rotate(3deg);background:var(--paper);padding:13px 13px 55px;box-shadow:0 22px 45px rgba(74,44,31,.2);border-radius:4px}
+.hero-photo img{width:100%;aspect-ratio:4/4.5;object-fit:cover;display:block;filter:sepia(.14)}
+.photo-caption{text-align:center;font-size:1.05rem;font-weight:800;padding-top:9px}
+.photo-caption small{display:block;color:var(--muted);font-size:.72rem;font-weight:500}
+.floating-note{position:absolute;z-index:2;background:var(--paper);border:1px solid #ead8c2;border-radius:18px;padding:12px 16px;box-shadow:var(--shadow);font-size:.85rem;font-weight:700}
+.note-one{top:53px;right:0;transform:rotate(-5deg)}
+.note-two{bottom:48px;left:0;transform:rotate(4deg)}
+.note-two span{color:var(--brick)}
+.hero-stamp{position:absolute;bottom:10px;right:17%;width:70px;height:70px;border:1px dashed var(--brick);border-radius:50%;display:grid;place-items:center;color:var(--brick);font-size:.75rem;font-weight:800;text-align:center;transform:rotate(-13deg)}
+
+.film-divider{height:42px;background:var(--brick);display:flex;align-items:center;justify-content:space-around;gap:12px;padding:0 10px;overflow:hidden}
+.film-divider span{height:18px;min-width:22px;width:22px;border-radius:4px;background:var(--cream)}
+.film-divider.slim{height:29px;background:transparent;gap:10px}
+.film-divider.slim span{height:13px;min-width:18px;width:18px;background:var(--brick);opacity:.55}
+
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step-card{padding:27px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.step-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.step-number{font-family:"DM Serif Display",serif;color:var(--brick);font-size:2.5rem;line-height:1}
+.step-icon{width:55px;height:55px;border-radius:18px;background:#f1ded0;display:grid;place-items:center;font-size:1.55rem;margin:20px 0 13px}
+.step-card h3{margin:0 0 7px;font-size:1.15rem}
+.step-card p{margin:0;color:var(--muted);font-size:.92rem}
+
+.features{background:#efe1ca}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.feature{padding:22px 18px;background:rgba(255,249,237,.78);border-radius:20px;border:1px solid rgba(196,90,64,.12)}
+.feature-icon{font-size:1.8rem}
+.feature h3{margin:9px 0 5px;font-size:1.03rem}
+.feature p{margin:0;font-size:.85rem;color:var(--muted)}
+
+.occasions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.occasion{border-radius:22px;padding:25px 16px;background:var(--paper);border:1px solid var(--line);text-align:center;transition:.25s;color:var(--ink)}
+.occasion:hover{background:var(--brick);color:white;transform:translateY(-4px)}
+.occasion .emoji{font-size:2.2rem;display:block;margin-bottom:9px}
+.occasion strong{display:block}
+.occasion small{font-size:.78rem;opacity:.75}
+
+.preview-section{background:#3B2A24;color:var(--cream);position:relative;overflow:hidden}
+.preview-section:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(196,90,64,.23),transparent 34%)}
+.preview-section .container{position:relative}
+.preview-section .section-head p{color:#d6c1af}
+.preview-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px;align-items:center}
+.preview-copy h2{font-size:clamp(2rem,4vw,3rem);line-height:1.35;margin:10px 0}
+.preview-copy p{color:#d6c1af}
+.preview-points{list-style:none;padding:0;margin:25px 0}
+.preview-points li{margin:10px 0;display:flex;gap:10px;align-items:center}
+.preview-points li:before{content:"♥";color:#e9a38d}
+.gift-window{background:#fff8eb;color:var(--ink);border-radius:25px;padding:15px;box-shadow:0 25px 70px rgba(0,0,0,.25);transform:rotate(-1deg)}
+.window-top{display:flex;align-items:center;justify-content:space-between;padding:4px 7px 13px;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.window-dots{display:flex;gap:5px}
+.window-dots i{width:7px;height:7px;border-radius:50%;background:#d9b8a5}
+.gift-content{padding:22px 15px 14px;text-align:center}
+.gift-content .mini-label{color:var(--brick);font-size:.78rem;font-weight:800}
+.gift-content h3{font-size:1.65rem;margin:5px 0}
+.gift-content>p{font-size:.88rem;color:var(--muted);margin:0 0 17px}
+.music-player{display:flex;align-items:center;gap:12px;text-align:right;background:#f2e5d3;border-radius:16px;padding:12px;margin:16px auto;max-width:370px}
+.play-button{width:43px;height:43px;border:0;border-radius:50%;background:var(--brick);color:white;display:grid;place-items:center;font-size:1.05rem}
+.music-info{flex:1;min-width:0}
+.music-info strong{display:block;font-size:.84rem}
+.music-info small{display:block;color:var(--muted);font-size:.73rem}
+.equalizer{display:flex;gap:3px;align-items:center;height:22px}
+.equalizer i{width:3px;height:7px;background:var(--brick);border-radius:4px}
+.equalizer.playing i{animation:equalize .65s ease-in-out infinite alternate}
+.equalizer.playing i:nth-child(2){animation-delay:.2s}
+.equalizer.playing i:nth-child(3){animation-delay:.4s}
+.equalizer.playing i:nth-child(4){animation-delay:.1s}
+@keyframes equalize{to{height:20px}}
+.album{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}
+.album img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.album-tile{aspect-ratio:1;border-radius:10px;display:grid;place-items:center;background:#ead0bd;font-size:1.8rem}
+.gift-footer{margin-top:17px;font-family:"DM Serif Display",serif;color:var(--brick);font-size:1.05rem}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="container nav">
+  <a class="brand" href="#home">
+   <img src="IMG-20261024-WA4230.jpg" alt="شعار ذكرى">
+   <span><strong>ذِكرى</strong><small>كل لحظة ليها حكاية</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+   <a href="#how">إزاي بتشتغل؟</a>
+   <a href="#features">محتوى الهدية</a>
+   <a href="#occasions">المناسبات</a>
+   <a href="#pricing">الباقات</a>
+   <a href="#faq">الأسئلة الشائعة</a>
+   <a class="btn btn-primary btn-small" href="#order">اطلب هديتك ♥</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div class="hero-copy">
+   <span class="eyebrow">هدية مختلفة من القلب</span>
+   <h1>في حاجات حلوة<br>مينفعش <span>تتنسي.</span></h1>
+   <p>حوّل ذكرياتكم لموقع صغير معمول مخصوص ليكم… صور، أغاني، رسايل، وتفاصيل تخلي كل مرة تفتحوه تحسوا بنفس اللحظة من جديد.</p>
+   <div class="hero-actions">
+    <a class="btn btn-primary" href="#order">اعمل هديتك ♥</a>
+    <a class="btn btn-light" href="#preview">شوف مثال الهدية ↓</a>
+   </div>
+   <div class="hero-note"><span class="tiny-hearts">♥ ♥ ♥</span><span>هدية شخصية بتفاصيل من اختيارك</span></div>
+  </div>
+  <div class="hero-art">
+   <div class="hero-halo"></div>
+   <div class="hero-photo">
+    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=700&q=85" alt="لحظة رومانسية">
+    <div class="photo-caption">أحلى صدفة في حياتي <small>To my favorite person ♡</small></div>
+   </div>
+   <div class="floating-note note-one">رسالة ليك… 💌</div>
+   <div class="floating-note note-two">من يوم ما عرفتك <span>♥</span></div>
+   <div class="hero-stamp">MADE<br>WITH LOVE</div>
+  </div>
+ </div>
+</section>
+
+<div class="film-divider" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="section" id="how">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="eyebrow">ببساطة خالص</span>
+   <h2>من فكرتك لهدية محدش غيركم عنده زيها.</h2>
+   <p>مش محتاج تكون فاهم في المواقع. إحنا بنرتب كل حاجة، وإنت عليك تحكيلنا الحكاية.</p>
+  </div>
+  <div class="steps-grid">
+   <article class="step-card reveal"><div class="step-number">01</div><div class="step-icon">💌</div><h3>احكيلنا فكرتك</h3><p>اختار المناسبة والباقة، وابعتلنا الصور والرسالة والتفاصيل اللي تحب تكون موجودة.</p></article>
+   <article class="step-card reveal delay-1"><div class="step-number">02</div><div class="step-icon">🎨</div><h3>نصمم ذكرياتكم</h3><p>بنرتب الصور والكلام والألوان والتفاصيل في تجربة مميزة ومناسبة لحكايتكم.</p></article>
+   <article class="step-card reveal delay-2"><div class="step-number">03</div><div class="step-icon">🎁</div><h3>ابعت الهدية</h3><p>تستلم رابط خاص تقدر تبعته للشخص اللي بتحبه، ويفتحه من الموبايل بسهولة.</p></article>
+  </div>
+ </div>
+</section>
+
+<div class="film-divider slim" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+<section class="section features" id="features">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="eyebrow">كل تفصيلة بتفرق</span>
+   <h2>مش مجرد لينك… دي حكايتكم.</h2>
+   <p>اختار التفاصيل اللي تخلي الهدية شبهكم، من أول صورة لآخر كلمة.</p>
+  </div>
+  <div class="feature-grid">
+   <article class="feature reveal"><div class="feature-icon">📸</div><h3>ألبوم صور</h3><p>اجمع الصور اللي ليها معنى في مكان واحد.</p></article>
+   <article class="feature reveal delay-1"><div class="feature-icon">💬</div><h3>رسالة من القلب</h3><p>كلامك يوصل بطريقة شخصية ومختلفة.</p></article>
+   <article class="feature reveal delay-2"><div class="feature-icon">🎵</div><h3>أغنية مميزة</h3><p>ضيف أغنية مرتبطة بذكرى أو لحظة بينكم.</p></article>
+   <article class="feature reveal"><div class="feature-icon">🕰️</div><h3>خط زمني</h3><p>رتب أجمل اللحظات من أول الحكاية لحد النهارده.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="occasions">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="eyebrow">لكل مناسبة حكاية</span>
+   <h2>قولها بطريقتك.</h2>
+   <p>مش لازم تستنى مناسبة كبيرة عشان تفرّح حد غالي عليك.</p>
+  </div>
+  <div class="occasions-grid">
+   <button type="button" class="occasion reveal" data-occasion="عيد ميلاد"><span class="emoji">🎂</span><strong>عيد ميلاد</strong><small>يومه يبقى مختلف</small></button>
+   <button type="button" class="occasion reveal delay-1" data-occasion="ذكرى ارتباط"><span class="emoji">❤️</span><strong>ذكرى ارتباط</strong><small>احفظوا أول الحكاية</small></button>
+   <button type="button" class="occasion reveal delay-2" data-occasion="اعتذار ومصالحة"><span class="emoji">🌷</span><strong>اعتذار ومصالحة</strong><small>كلام من القلب</small></button>
+   <button type="button" class="occasion reveal" data-occasion="من غير مناسبة"><span class="emoji">🧸</span><strong>من غير مناسبة</strong><small>عشان هو شخص مميز</small></button>
+  </div>
+ </div>
+</section>
+
+<section class="section preview-section" id="preview">
+ <div class="container preview-grid">
+  <div class="preview-copy reveal">
+   <span class="eyebrow">تخيّل رد فعله</span>
+   <h2>أول ما يفتح اللينك… يلاقي كل حاجة بتفكّره بيكم.</h2>
+   <p>صفحة شخصية فيها الرسالة والصور والتفاصيل اللي اخترتها، معمولة عشان تتفتح وتتقري براحة من الموبايل.</p>
+   <ul class="preview-points"><li>تصميم لطيف وسهل الاستخدام</li><li>صور ورسالة بتفاصيل من اختيارك</li><li>رابط خاص تقدر تشاركه</li></ul>
+   <a href="#order" class="btn btn-primary">خلّي فكرتك حقيقة ♥</a>
+  </div>
+  <div class="gift-window reveal delay-1">
+   <div class="window-top"><span>هدية مخصوص ليك ♡</span><div class="window-dots"><i></i><i></i><i></i></div></div>
+   <div class="gift-content">
+    <span class="mini-label">TO MY FAVORITE PERSON</span>
+    <h3>إنت أحلى حاجة حصلتلي ❤️</h3>
+    <p>لو هختار من الأول، هختارك إنت كل مرة.</p>
+    <div class="music-player">
+     <button class="play-button" id="playDemo" aria-label="تشغيل المعاينة">▶</button>
+     <div class="music-info"><strong>أغنيتنا المفضلة</strong><small id="musicStatus">معاينة شكل مشغّل الموسيقى</small></div>
+     <div class="equalizer" id="equalizer"><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="album">
+     <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=300&q=80" alt="صورة تذكارية 1">
+     <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=300&q=80" alt="صورة تذكارية 2">
+     <div class="album-tile">♡</div>
+    </div>
+    <div class="gift-footer">Our story, our memories ✨</div>
+   </div>
+  </div>
+ </div>
+</section>
+<style>
+/* PRICING */
+.pricing-section {
+  padding: 90px 7%;
+  background: var(--cream, #F5ECD7);
+  color: var(--dark, #3B2A24);
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.section-heading h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 48px);
+  margin: 0 0 12px;
+}
+
+.section-heading p {
+  opacity: .75;
+  line-height: 1.8;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.price-card {
+  border: 1px solid rgba(59,42,36,.18);
+  border-radius: 18px;
+  padding: 28px 22px;
+  background: rgba(255,255,255,.35);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.price-card.featured {
+  background: #3B2A24;
+  color: #F5ECD7;
+  transform: translateY(-8px);
+}
+
+.price-card h3 {
+  font-size: 23px;
+  margin: 0;
+}
+
+.price {
+  font-size: 38px;
+  font-weight: 800;
+  color: #C45A40;
+}
+
+.price small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.price-card ul {
+  padding-right: 20px;
+  line-height: 2.2;
+  flex: 1;
+}
+
+.z-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #C45A40;
+  background: #C45A40;
+  color: white;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.z-btn:hover {
+  background: #a7442e;
+  transform: translateY(-2px);
+}
+
+.z-btn.outline {
+  color: #C45A40;
+  background: transparent;
+}
+
+.featured .z-btn.outline {
+  color: #F5ECD7;
+  border-color: #F5ECD7;
+}
+
+/* FAQ */
+.faq-section {
+  padding: 85px 7%;
+  background: #fffaf0;
+  color: #3B2A24;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq-list details {
+  border-bottom: 1px solid rgba(59,42,36,.2);
+  padding: 20px 0;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.faq-list details p {
+  line-height: 2;
+  opacity: .8;
+  margin-bottom: 0;
+}
+
+/* ORDER */
+.order-section {
+  padding: 90px 7%;
+  background: #3B2A24;
+  color: #F5ECD7;
+}
+
+.order-wrap {
+  max-width: 760px;
+  margin: auto;
+}
+
+.order-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(245,236,215,.25);
+  background: rgba(255,255,255,.07);
+  color: #F5ECD7;
+  font: inherit;
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #C45A40;
+}
+
+.form-field select option {
+  color: #3B2A24;
+  background: #F5ECD7;
+}
+
+.form-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.order-form .z-btn {
+  grid-column: 1 / -1;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* FOOTER */
+.site-footer {
+  background: #241915;
+  color: #F5ECD7;
+  padding: 35px 7%;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.footer-socials a {
+  color: #F5ECD7;
+  text-decoration: none;
+  border: 1px solid rgba(245,236,215,.3);
+  border-radius: 50px;
+  padding: 10px 18px;
+  transition: .2s;
+}
+
+.footer-socials a:hover {
+  background: #C45A40;
+  border-color: #C45A40;
+}
+
+.footer-copy {
+  opacity: .6;
+  font-size: 13px;
+  margin-top: 25px;
+}
+
+/* FLOATING WHATSAPP */
+.floating-wa {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 27px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.2);
+  transition: .25s;
+}
+
+.floating-wa:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 850px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+
+  .price-card.featured {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing-section,
+  .faq-section,
+  .order-section {
+    padding: 65px 5%;
+  }
+
+  .order-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full,
+  .order-form .z-btn {
+    grid-column: auto;
+  }
+}
+</style>
+
+<!-- PRICING SECTION -->
+<section class="pricing-section" id="prices">
+  <div class="section-heading">
+    <h2>اختار الذكرى اللي شبهكم</h2>
+    <p>كل حكاية تستاهل تتوثق بطريقة مختلفة.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <article class="price-card">
+      <h3>بداية الحكاية</h3>
+      <div class="price">160 <small>جنيه</small></div>
+      <p>صفحة بسيطة تجمع أجمل تفاصيل ذكراكم.</p>
+      <ul>
+        <li>تصميم شخصي</li>
+        <li>رسالة خاصة</li>
+        <li>صور وذكريات</li>
+        <li>رابط خاص للمشاركة</li>
+      </ul>
+      <a class="z-btn outline" href="#order" data-package="بداية الحكاية - 160 جنيه">اختار الباقة</a>
+    </article>
+
+    <article class="price-card featured">
+      <h3>حكايتنا</h3>
+      <div class="price">220 <small>جنيه</small></div>
+      <p>تفاصيل أكتر ولمسات تخلي التجربة مميزة.</p>
+      <ul>
+        <li>كل مميزات الباقة الأولى</li>
+        <li>تصميم أكثر تميزًا</li>
+        <li>تايم لاين للذكريات</li>
+        <li>تأثيرات وانتقالات</li>
+      </ul>
+      <a class="z-btn outline" href="#order" data-package="حكايتنا - 220 جنيه">اختار الباقة</a>
+    </article>
+
+    <article class="price-card">
+      <h3>للأبد</h3>
+      <div class="price">300 <small>جنيه</small></div>
+      <p>تجربة كاملة متصممة على تفاصيل حكايتكم.</p>
+      <ul>
+        <li>كل مميزات الباقات السابقة</li>
+        <li>تصميم مخصص بالكامل</li>
+        <li>تفاصيل وتفاعلات إضافية</li>
+        <li>اهتمام خاص بكل ذكرى</li>
+      </ul>
+      <a class="z-btn outline" href="#order" data-package="للأبد - 300 جنيه">اختار الباقة</a>
+    </article>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div class="section-heading">
+    <h2>أسئلة بتتكرر</h2>
+    <p>كل اللي محتاج تعرفه قبل ما تبدأ.</p>
+  </div>
+
+  <div class="faq-list">
+    <details>
+      <summary>الموقع بيكون خاص بيني وبين الشخص التاني؟</summary>
+      <p>بنجهز لك رابط تقدر تشاركه مع الشخص اللي عايز توصله ذكراك. لو محتاج خصوصية إضافية، وضّح ده وقت الطلب عشان نتفق على التفاصيل المتاحة.</p>
+    </details>
+
+    <details>
+      <summary>هحتاج أبعت إيه عشان نبدأ؟</summary>
+      <p>ابعت فكرتك، والرسالة، والصور أو التفاصيل اللي حابب تضيفها، وإحنا هنرتبها في تجربة مناسبة ليكم.</p>
+    </details>
+
+    <details>
+      <summary>الموقع بيشتغل على الموبايل؟</summary>
+      <p>أيوه، التصميم معمول عشان يناسب شاشات الموبايل والكمبيوتر.</p>
+    </details>
+
+    <details>
+      <summary>هستلم الموقع إمتى؟</summary>
+      <p>المدة بتختلف حسب تفاصيل الباقة والمحتوى المطلوب. هنأكد لك الموعد قبل ما نبدأ التنفيذ.</p>
+    </details>
+
+    <details>
+      <summary>أقدر أطلب تصميم مختلف؟</summary>
+      <p>طبعًا، ابعت فكرتك في نموذج الطلب وهنناقش التفاصيل قبل التنفيذ.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ORDER SECTION -->
+<section class="order-section" id="order">
+  <div class="order-wrap">
+    <div class="section-heading">
+      <h2>يلا نعمل ذكرى</h2>
+      <p>احكيلنا عن فكرتك، وهنكمل التفاصيل معاك على واتساب.</p>
+    </div>
+
+    <form class="order-form" id="orderForm">
+      <div class="form-field">
+        <label for="customerName">اسمك</label>
+        <input id="customerName" name="name" type="text" placeholder="اكتب اسمك" required>
+      </div>
+
+      <div class="form-field">
+        <label for="customerPhone">رقم واتساب</label>
+        <input id="customerPhone" name="phone" type="tel" placeholder="01xxxxxxxxx" required>
+      </div>
+
+      <div class="form-field full">
+        <label for="selectedPackage">الباقة اللي اخترتها</label>
+        <select id="selectedPackage" name="package" required>
+          <option value="">اختار الباقة</option>
+          <option value="بداية الحكاية - 160 جنيه">بداية الحكاية — 160 جنيه</option>
+          <option value="حكايتنا - 220 جنيه">حكايتنا — 220 جنيه</option>
+          <option value="للأبد - 300 جنيه">للأبد — 300 جنيه</option>
+          <option value="لسه محتاج مساعدة في الاختيار">لسه محتاج مساعدة في الاختيار</option>
+        </select>
+      </div>
+
+      <div class="form-field full">
+        <label for="customerIdea">احكيلنا عن فكرتك</label>
+        <textarea id="customerIdea" name="idea" placeholder="عايز تضيف إيه؟ رسالة، صور، أغنية، تفاصيل معينة..." required></textarea>
+      </div>
+
+      <button class="z-btn" type="submit">ابعت طلبك على واتساب</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <img
+    class="footer-logo"
+    src="IMG-20261024-WA4230.jpg"
+    alt="ذِكرى"
+    onerror="this.style.display='none'"
+  >
+
+  <h2>ذِكرى</h2>
+  <p>في حكايات تستاهل تفضل عايشة.</p>
+
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/z1kra.eg/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://wa.me/201037500636" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+
+  <div class="footer-copy">
+    © <span id="currentYear"></span> ذِكرى — كل الحقوق محفوظة
+  </div>
+</footer>
+
+<a
+  class="floating-wa"
+  href="https://wa.me/201037500636"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="تواصل معنا على واتساب"
+  title="تواصل معنا على واتساب"
+>◉</a>
+
+<script>
+const whatsappNumber = "201037500636";
+
+document.querySelectorAll("[data-package]").forEach(button => {
+  button.addEventListener("click", () => {
+    const packageField = document.getElementById("selectedPackage");
+    packageField.value = button.dataset.package;
+  });
+});
+
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const selectedPackage = document.getElementById("selectedPackage").value;
+  const idea = document.getElementById("customerIdea").value.trim();
+
+  if (!name || !phone || !selectedPackage || !idea) {
+    alert("من فضلك كمّل كل البيانات.");
+    return;
+  }
+
+  const message =
+    "أهلًا ذِكرى ❤️، عايز أطلب موقع ذكريات.\n\n" +
+    "الاسم: " + name + "\n" +
+    "رقم واتساب: " + phone + "\n" +
+    "الباقة: " + selectedPackage + "\n" +
+    "تفاصيل الفكرة: " + idea;
+
+  const whatsappURL =
+    "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+
+  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+});
+
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
